@@ -1,0 +1,111 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>GATE Study Planner</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#fff8f1;--cd:#ffffffcc;--tx:#2a1a12;--mu:#7a6a5e;--ac:#f97316;--ac2:#fbbf24;--ok:#10b981;--bd:#f1dfd0;--wa:#f59e0b;--sh:0 8px 30px #f973161a}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#120c0a;--cd:#1e1512cc;--tx:#fff1e6;--mu:#c2a894;--ac:#fb923c;--ac2:#fbbf24;--bd:#3a2a22;--sh:0 8px 30px #0006}}
+:root[data-theme=dark]{--bg:#120c0a;--cd:#1e1512cc;--tx:#fff1e6;--mu:#c2a894;--ac:#fb923c;--ac2:#fbbf24;--bd:#3a2a22;--sh:0 8px 30px #0006}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(900px 400px at 10% -10%,#f9731633,transparent),radial-gradient(700px 400px at 100% 0,#fbbf2422,transparent),var(--bg);color:var(--tx);font:15px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100vh}
+.w{max-width:960px;margin:0 auto;padding:18px 16px 40px}
+h1{font-size:26px;margin:0;font-weight:800;background:linear-gradient(90deg,var(--ac),var(--ac2));-webkit-background-clip:text;background-clip:text;color:transparent}h2{font-size:16px;margin:0 0 10px}
+.top{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-bottom:14px}.top .mu{margin-top:2px}
+.set{display:flex;gap:8px;flex-wrap:wrap}
+select,input,textarea,button{font:inherit;color:var(--tx);background:var(--cd);border:1px solid var(--bd);border-radius:12px;padding:8px 12px;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--ac);box-shadow:0 0 0 3px #f9731633}
+button{cursor:pointer;transition:.15s}button:hover{transform:translateY(-1px)}button.p{background:linear-gradient(90deg,var(--ac),var(--ac2));color:#fff;border:0;font-weight:600;padding:10px 18px}
+nav{position:sticky;top:0;z-index:5;display:flex;gap:4px;overflow-x:auto;padding:5px;margin-bottom:16px;background:var(--cd);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--bd);border-radius:16px;box-shadow:var(--sh)}
+nav button{flex:1;white-space:nowrap;border:0;background:transparent;border-radius:12px;color:var(--mu);font-weight:600}nav button.on{background:linear-gradient(90deg,var(--ac),var(--ac2));color:#fff}
+.c{background:var(--cd);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--bd);border-radius:20px;padding:18px;margin-bottom:14px;box-shadow:var(--sh)}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:14px}.g .c{margin:0;text-align:center}
+.s b{display:block;font-size:30px;font-weight:800;line-height:1.2;background:linear-gradient(90deg,var(--ac),var(--ac2));-webkit-background-clip:text;background-clip:text;color:transparent}.s span,.mu{color:var(--mu);font-size:13px}
+.ring{--p:0;width:78px;height:78px;border-radius:50%;margin:0 auto 4px;display:grid;place-items:center;background:conic-gradient(var(--ac) calc(var(--p)*1%),var(--bd) 0)}
+.ring b{width:60px;height:60px;border-radius:50%;background:var(--bg);display:grid;place-items:center;font-size:18px}
+.bar{height:10px;background:var(--bd);border-radius:8px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--ac),var(--ac2));border-radius:8px;transition:width .4s}
+label.t{display:flex;gap:10px;align-items:flex-start;padding:8px 10px;margin:4px 0;border-radius:12px;cursor:pointer}label.t:hover{background:#f9731614}
+input[type=checkbox]{accent-color:var(--ac);width:18px;height:18px;margin-top:2px;padding:0}.t.d span{text-decoration:line-through;color:var(--mu)}
+.day{display:flex;gap:12px;padding:10px 12px;margin:6px 0;border-radius:14px;border-left:4px solid var(--ac);background:#f973160d}.day.rev{border-color:var(--wa);background:#f59e0b12}.day.mock{border-color:var(--ok);background:#10b98114}
+.day.now{box-shadow:0 0 0 2px var(--ac)}.dd{min-width:96px;font-weight:700}
+.tag{font-size:11px;padding:2px 9px;border-radius:99px;background:#f9731622;color:var(--ac);font-weight:600}
+textarea{width:100%;min-height:320px;border-radius:14px}.ai{white-space:pre-wrap}
+.m{display:flex;align-items:flex-end;gap:8px;height:120px;padding-top:18px}.m div{flex:1;background:linear-gradient(180deg,var(--ac2),var(--ac));border-radius:8px 8px 0 0;min-width:16px;position:relative}.m em{position:absolute;top:-18px;font-size:11px;font-style:normal;left:0;right:0;text-align:center;color:var(--mu)}
+a{color:var(--ac);text-decoration:none;font-weight:600}a:hover{text-decoration:underline}.hero{background:linear-gradient(120deg,#f97316,#ef4444);color:#fff;font-weight:700;font-size:16px;border:0}.rs{display:block;margin-top:2px;font-size:12.5px}
+.rg{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}.rk{padding:12px;border-radius:14px;background:#f9731612;display:flex;flex-direction:column;gap:4px;align-items:flex-start}.rk small{color:var(--mu);font-size:12.5px}
+.row{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:8px 0;border-top:1px solid var(--bd)}.row:first-of-type{border:0}
+@media(max-width:520px){h1{font-size:22px}.dd{min-width:78px}}
+</style></head><body><div class="w">
+<div class="top"><div><h1>GATE Study Planner</h1><div class="mu">Plan · Track · Improve</div></div><div class="set"><select id="br" onchange="setB(this.value)"></select><input type="date" id="ex" onchange="setE(this.value)" title="Exam date"></div></div>
+<nav id="nv"></nav><div id="v"></div></div>
+<script>
+const GA=["General Aptitude",15,"Verbal Ability|Numerical Ability|Logical Reasoning|Data Interpretation"];
+const D={
+CS:["CSE / IT",[["Engineering Mathematics",13,"Discrete Mathematics|Linear Algebra|Calculus|Probability & Statistics"],["Digital Logic",5,"Boolean Algebra & K-Maps|Combinational Circuits|Sequential Circuits|Number Systems"],["Computer Organization",8,"Instructions & Addressing|Pipelining & ALU|Cache & Memory|I/O Interface"],["Programming & Data Structures",10,"C & Recursion|Arrays, Stacks, Queues|Linked Lists & Trees|Graphs & Hashing"],["Algorithms",8,"Asymptotic Analysis|Divide & Conquer|Greedy & DP|Graph Algorithms"],["Theory of Computation",8,"Finite Automata & Regular|CFG & PDA|Turing Machines|Decidability"],["Compiler Design",6,"Lexical Analysis|Parsing|Syntax-Directed Translation|Code Optimization"],["Operating Systems",9,"Processes & Threads|CPU Scheduling|Synchronization & Deadlocks|Memory & File Systems"],["Databases",8,"ER & Relational Algebra|SQL|Normalization|Transactions & Indexing"],["Computer Networks",8,"Layers & Data Link|IP & Routing|Transport TCP/UDP|Application Protocols"],GA]],
+EC:["ECE",[["Engineering Mathematics",13,"Linear Algebra|Calculus|Differential Equations|Probability & Transforms"],["Networks, Signals & Systems",14,"Network Theorems & Transients|Fourier & Laplace|LTI Systems|Z-Transform & Sampling"],["Electronic Devices & Circuits",12,"Semiconductor Devices|Diodes & BJT/MOSFET|Amplifiers|Op-Amps & Oscillators"],["Digital Circuits",8,"Combinational Logic|Sequential Logic|ADC/DAC & Memories|Microprocessors"],["Control Systems",8,"Transfer Functions|Time Response|Root Locus & Bode|Stability & State Space"],["Communications",12,"Analog Modulation|Digital Modulation|Information Theory|Noise & Random Processes"],["Electromagnetics",10,"Maxwell & Waves|Transmission Lines|Waveguides|Antennas"],GA]],
+EE:["Electrical",[["Engineering Mathematics",13,"Linear Algebra|Calculus|Differential Equations|Complex Variables & Probability"],["Electric Circuits",10,"Network Theorems|Transients|Two-Port & Resonance|Three-Phase"],["Electromagnetic Fields",5,"Electrostatics|Magnetostatics|Maxwell Equations"],["Signals & Systems",8,"LTI Systems|Fourier & Laplace|Sampling & Z-Transform"],["Electrical Machines",12,"Transformers|DC Machines|Induction Machines|Synchronous Machines"],["Power Systems",12,"Transmission Lines|Load Flow & Faults|Stability|Protection"],["Control Systems",8,"Transfer Functions|Time Response|Root Locus & Bode|Stability"],["Measurements & Electronics",9,"Instruments & Bridges|Analog Circuits|Digital Electronics"],["Power Electronics",8,"Rectifiers|Choppers|Inverters & Drives"],GA]],
+ME:["Mechanical",[["Engineering Mathematics",13,"Linear Algebra|Calculus|Differential Equations|Probability & Numerical Methods"],["Engineering Mechanics",6,"Statics & Friction|Dynamics|Virtual Work"],["Strength of Materials",9,"Stress & Strain|Bending & Torsion|Deflection & Columns|Failure Theories"],["Theory of Machines & Design",10,"Mechanisms & Gears|Vibrations|Fatigue & Design of Elements"],["Fluid Mechanics",9,"Fluid Statics & Kinematics|Bernoulli & Momentum|Boundary Layer & Pipe Flow|Turbomachinery"],["Heat Transfer",8,"Conduction|Convection|Radiation & Heat Exchangers"],["Thermodynamics & Applications",11,"Laws & Properties|Cycles|IC Engines|Refrigeration & Psychrometry"],["Manufacturing & Industrial Eng.",12,"Casting & Welding|Machining & Metrology|Forming|Operations Research & Production"],GA]],
+CE:["Civil",[["Engineering Mathematics",13,"Linear Algebra|Calculus|Differential Equations|Probability & Numerical Methods"],["Structural Engineering",16,"Mechanics & Analysis|RCC Design|Steel Design|Indeterminate Structures"],["Geotechnical Engineering",12,"Soil Properties|Permeability & Consolidation|Shear Strength|Foundations"],["Fluid Mechanics & Hydrology",12,"Fluid Properties & Flow|Open Channel|Hydrology|Irrigation"],["Environmental Engineering",10,"Water Treatment|Wastewater|Air Pollution & Noise"],["Transportation Engineering",9,"Highway Geometric Design|Pavement Design|Traffic Engineering"],["Surveying",5,"Levelling & Traversing|Curves & Triangulation"],GA]]};
+const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const ymd=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+const DAY=864e5,today=()=>new Date(ymd(new Date())+"T00:00");
+let S={};try{S=JSON.parse(localStorage.getItem("gate")||"{}")||{}}catch(e){}
+S=Object.assign({branch:"CS",exam:"2027-02-06",start:ymd(new Date()),done:{},log:{},mocks:[],notes:{}},S);
+const save=()=>{try{localStorage.setItem("gate",JSON.stringify(S))}catch(e){}};
+let tab="home",nsub=0,aiTxt="";
+const subs=()=>D[S.branch][1];
+const all=()=>subs().flatMap((s,i)=>s[2].split("|").map((n,j)=>({id:S.branch+i+"."+j,si:i,n})));
+function seq(l){const by=subs().map((s,i)=>l.filter(t=>t.si==i)),tk=by.map(()=>0),o=[];
+while(o.length<l.length){let b=-1,bv=1e9;by.forEach((a,i)=>{if(tk[i]<a.length){const v=tk[i]/subs()[i][1];if(v<bv){bv=v;b=i}}});o.push(by[b][tk[b]++])}return o}
+function plan(){const td=today(),ex=new Date(S.exam+"T00:00"),n=Math.max(0,Math.round((ex-td)/DAY)),rev=Math.min(n,Math.max(7,Math.round(n*.25)));
+const pend=seq(all().filter(t=>!S.done[t.id])),days=[];let rc=0;
+for(let d=0;d<n;d++){const dt=new Date(td.getTime()+d*DAY),sun=dt.getDay()==0;
+days.push({dt,k:sun?"mock":d>=n-rev?"rev":"study",t:[],s:""})}
+const sd=days.filter(x=>x.k=="study"),per=sd.length?Math.ceil(pend.length/sd.length):0;
+sd.forEach((x,i)=>x.t=pend.slice(i*per,(i+1)*per));
+days.forEach(x=>{if(x.k=="rev")x.s=subs()[rc++%subs().length][0]});
+return{days,n,rev,per,pend}}
+function stats(){const A=all(),dn=A.filter(t=>S.done[t.id]).length,p=plan(),td=today(),st=new Date(S.start+"T00:00"),ex=new Date(S.exam+"T00:00");
+const tot=Math.max(1,Math.round((ex-st)/DAY)),sdTot=Math.max(1,tot-Math.max(7,Math.round(tot*.25))),el=Math.max(0,Math.round((td-st)/DAY));
+const exp=Math.min(1,el/sdTot)*A.length,diff=dn-exp;let h7=0;for(let i=0;i<7;i++)h7+=+S.log[ymd(new Date(td.getTime()-i*DAY))]||0;
+const per=subs().map((s,i)=>{const T=A.filter(t=>t.si==i);return{n:s[0],w:s[1],p:Math.round(100*T.filter(t=>S.done[t.id]).length/T.length)}});
+return{A,dn,p,diff,h7,per,pct:Math.round(100*dn/A.length)}}
+function setB(v){S.branch=v;save();render()}function setE(v){if(v){S.exam=v;save();render()}}
+function tog(id){S.done[id]=!S.done[id];save();render()}
+function logH(){const v=+$("#hh").value;if(v>=0){S.log[ymd(new Date())]=v;save();render()}}
+function addM(){const v=+$("#mk").value;if(v>=0&&v<=100&&$("#mk").value!==""){S.mocks.push({d:ymd(new Date()),s:v});save();render()}}
+const R={"Engineering Mathematics":["GATE Wallah","NPTEL"],"Digital Logic":["Neso Academy","Gate Smashers"],"Computer Organization":["Gate Smashers","Neso Academy"],"Programming & Data Structures":["Jenny\'s Lectures","GO Classes"],"Algorithms":["Abdul Bari","GO Classes"],"Theory of Computation":["Gate Smashers","Ravindrababu Ravula"],"Compiler Design":["Gate Smashers","Ravindrababu Ravula"],"Operating Systems":["Gate Smashers","KnowledgeGATE"],"Databases":["Gate Smashers","KnowledgeGATE"],"Computer Networks":["Gate Smashers","KnowledgeGATE"],"General Aptitude":["GATE Wallah","Unacademy GATE"]};
+const B={"Gate Smashers":"Short, exam-focused lectures","Abdul Bari":"Best intuition for algorithms","Neso Academy":"Clear fundamentals","Jenny\'s Lectures":"Slow, detailed explanations","GO Classes":"Deep, GATE-level problems","KnowledgeGATE":"Full coverage + revision","Ravindrababu Ravula":"GATE problem-solving","NPTEL":"Rigorous theory","GATE Wallah":"Maths & aptitude practice","Unacademy GATE":"Branch-wise classes","GATE Academy":"Branch-wise lectures"};
+const rc=n=>R[n]||["NPTEL","GATE Academy"];
+const lk=(c,t)=>`<a href="https://www.youtube.com/results?search_query=${encodeURIComponent(c+" "+t+" GATE")}" target="_blank" rel="noopener">▶ ${esc(c)}</a>`;
+const pyq=t=>S.branch=="CS"?`<a href="https://gateoverflow.in/previous-years" target="_blank" rel="noopener">GATE Overflow PYQs</a>`:`<a href="https://www.google.com/search?q=${encodeURIComponent("GATE "+D[S.branch][0]+" "+t+" previous year questions")}" target="_blank" rel="noopener">Find PYQs</a>`;
+function chk(t,r){return`<label class="t ${S.done[t.id]?"d":""}"><input type="checkbox" ${S.done[t.id]?"checked":""} onchange="tog('${t.id}')"><span><b>${esc(subs()[t.si][0])}</b> · ${esc(t.n)}${r?`<small class="rs">${lk(rc(subs()[t.si][0])[0],t.n)} · ${lk(rc(subs()[t.si][0])[1],t.n)}</small>`:""}</span></label>`}
+function dayHtml(x,i){const L={mock:"📝 Mock test + error analysis",rev:"🔁 Revise "+esc(x.s)+" + previous-year questions"};
+const body=x.k=="study"?(x.t.length?x.t.map(t=>`${esc(subs()[t.si][0])}: ${esc(t.n)}`).join(" • "):"All topics scheduled — practice PYQs"):L[x.k];
+return`<div class="day ${x.k} ${i==0?"now":""}"><div class="dd">${x.dt.toLocaleDateString(undefined,{day:"numeric",month:"short",weekday:"short"})}</div><div>${body}</div></div>`}
+const Q=["One topic today beats ten topics 'someday'.","Every PYQ you solve is a mark you already own.","Consistency beats intensity. Show up today.","You don't need motivation, just the next topic.","Mock tests are practice, not judgement. Learn from every one.","Small daily wins add up to a rank you'll be proud of.","The exam date is fixed, so make today count."];
+function streak(){let k=0;for(let i=0;i<400;i++){const v=+S.log[ymd(new Date(today().getTime()-i*DAY))]||0;if(v>0)k++;else if(i>0)break}return k}
+function home(s){const t=s.p.days[0],h=+S.log[ymd(new Date())]||0,nx=(t&&t.k=="study"&&t.t[0])||s.p.pend[0];
+const rec=nx?(()=>{const[a,b]=rc(subs()[nx.si][0]);return`<div class="c"><h2>🎓 Learn next: ${esc(nx.n)}</h2><p class="mu">${esc(subs()[nx.si][0])}</p><div class="rg"><div class="rk"><span class="tag">Best pick</span><b>${lk(a,nx.n)}</b><small>${esc(B[a]||"")}</small></div><div class="rk"><span class="tag">Alternate</span><b>${lk(b,nx.n)}</b><small>${esc(B[b]||"")}</small></div><div class="rk"><span class="tag">Then practise</span><b>${pyq(nx.n)}</b><small>Solve 10–15 PYQs, then tick the topic</small></div></div></div>`})():"";
+const tbl=`<div class="c"><h2>▶ Best YouTubers by subject</h2>${subs().map(u=>{const r=rc(u[0]);return`<div class="row"><span>${esc(u[0])}</span><span>${lk(r[0],u[0])} · ${lk(r[1],u[0])}</span></div>`}).join("")}<p class="mu">Popular picks among GATE aspirants. Watch one video before committing to a teacher.</p></div>`;
+const st=s.p.n<=0?"Exam date reached or passed — update the date above.":s.diff>=0?`Ahead of plan by ~${Math.round(s.diff)} topics. Keep it up!`:`Behind plan by ~${Math.round(-s.diff)} topics — plan auto-rebalanced to ~${s.p.per}/day.`;
+return`<div class="c hero">🔥 ${Q[new Date().getDate()%Q.length]}</div><div class="g"><div class="c s"><b>${s.p.n}</b><span>days left</span></div><div class="c s"><div class="ring" style="--p:${s.pct}"><b>${s.pct}%</b></div><span>${s.dn}/${s.A.length} topics done</span></div><div class="c s"><b>${s.h7.toFixed(1)}h</b><span>studied, last 7 days</span></div><div class="c s"><b>${s.p.per}</b><span>topics/day needed</span></div><div class="c s"><b>${streak()}</b><span>day study streak</span></div></div>
+<div class="c"><div class="bar"><i style="width:${s.pct}%"></i></div><p class="mu">${st}</p></div>
+<div class="c"><h2>Today</h2>${!t?"<p class=mu>No days left.</p>":t.k=="study"?(t.t.map(x=>chk(x,1)).join("")||"<p class=mu>Nothing pending — solve PYQs.</p>"):`<p>${t.k=="mock"?"📝 Sunday: take a full mock test, then analyse every wrong answer.":"🔁 Revise <b>"+esc(t.s)+"</b> and solve previous-year questions."}</p>`}
+<p><input id="hh" type="number" min="0" max="16" step="0.5" value="${h}" style="width:80px"> hours studied today <button onclick="logH()">Save</button></p></div>${rec}${tbl}`}
+function plans(s){return`<div class="c"><h2>Day-by-day plan</h2><p class="mu">Pending topics are spread over study days (Sundays = mock tests); the last ${s.p.rev} days are revision. Tick topics to auto-rebalance.</p>${s.p.days.map(dayHtml).join("")||"<p class=mu>No days left.</p>"}</div>`}
+function syl(s){return subs().map((u,i)=>{const T=s.A.filter(t=>t.si==i);return`<div class="c"><h2>${esc(u[0])} <span class="tag">~${u[1]} marks</span> <span class="tag">▶ ${esc(rc(u[0])[0])}</span> <span class="tag">${s.per[i].p}%</span></h2><div class="bar"><i style="width:${s.per[i].p}%"></i></div>${T.map(chk).join("")}</div>`}).join("")}
+function notes(){return`<div class="c"><h2>Notes</h2><select onchange="nsub=+this.value;render()">${subs().map((u,i)=>`<option value="${i}" ${i==nsub?"selected":""}>${esc(u[0])}</option>`).join("")}</select><p></p><textarea id="nt" placeholder="Formulas, shortcuts, mistakes to avoid…" oninput="S.notes[S.branch+nsub]=this.value;save()">${esc(S.notes[S.branch+nsub]||"")}</textarea></div>`}
+function ana(s){const m=S.mocks,avg=m.length?(m.reduce((a,b)=>a+b.s,0)/m.length).toFixed(1):"–",weak=[...s.per].sort((a,b)=>a.p-b.p||b.w-a.w).slice(0,3);
+return`<div class="c"><h2>Mock tests (score /100)</h2><div class="m">${m.slice(-12).map(x=>`<div style="height:${Math.max(4,x.s)}%"><em>${x.s}</em></div>`).join("")||"<span class=mu>No mocks logged</span>"}</div><p><input id="mk" type="number" min="0" max="100" style="width:90px" placeholder="score"> <button onclick="addM()">Add mock</button> <span class="mu">average: ${avg}</span></p></div>
+<div class="c"><h2>Quick insights</h2><ul><li>Weakest coverage: ${weak.map(w=>`${esc(w.n)} (${w.p}%, ~${w.w} marks)`).join("; ")}</li><li>${s.h7<20?"Last 7 days: "+s.h7.toFixed(1)+"h — aim for 35–42h/week.":"Study hours look healthy."}</li></ul></div>
+<div class="c"><h2>🤖 AI analysis</h2><button class="p" id="ab" onclick="askAI()">Analyse my progress</button><p class="ai" id="ao">${esc(aiTxt)}</p></div>`}
+async function askAI(){const s=stats(),o=$("#ao");o.textContent="Thinking…";
+try{let pc="";try{pc=localStorage.getItem("gpass")||""}catch(e){}
+if(!pc)pc=window.prompt("Enter your passcode")||"";if(!pc){o.textContent="Passcode needed.";return}
+const d={branch:D[S.branch][0],daysLeft:s.p.n,topicsDone:s.dn+"/"+s.A.length,aheadBehindTopics:Math.round(s.diff),hoursLast7Days:s.h7,mockScores:S.mocks.map(x=>x.s),subjects:s.per.map(x=>({subject:x.n,marksWeight:x.w,percentDone:x.p}))};
+const q="You are a GATE exam coach. Analyse this student's progress data and reply in plain text (no markdown tables), max 250 words: 1) honest diagnosis, 2) top 3 priority subjects and why (consider marks weightage), 3) concrete adjustments for the next 7 days, 4) mock-test and revision strategy.\nDATA: "+JSON.stringify(d);
+const r=await fetch("/api/analyze",{method:"POST",headers:{"content-type":"application/json","x-passcode":pc},body:JSON.stringify({prompt:q})});
+if(r.status==401){try{localStorage.removeItem("gpass")}catch(e){}o.textContent="Wrong passcode. Click the button to try again.";return}
+const j=await r.json();try{localStorage.setItem("gpass",pc)}catch(e){}aiTxt=j.text||"No response.";o.textContent=aiTxt}catch(e){o.textContent="Couldn't reach the AI service."}}
+function render(){const s=stats();$("#br").innerHTML=Object.keys(D).map(k=>`<option value="${k}" ${k==S.branch?"selected":""}>${D[k][0]}</option>`).join("");$("#ex").value=S.exam;
+$("#nv").innerHTML=[["home","Dashboard"],["plan","Plan"],["syl","Syllabus"],["notes","Notes"],["ana","Analysis"]].map(([k,l])=>`<button class="${tab==k?"on":""}" onclick="tab='${k}';render()">${l}</button>`).join("");
+$("#v").innerHTML={home,plan:plans,syl,notes,ana}[tab](s)}
+render();
+</script></body></html>
